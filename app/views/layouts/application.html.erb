@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>KNowELearningWebsite</title>
+    <title>kNOW</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= favicon_link_tag "/apple-touch-icon.png", rel: "apple-touch-icon" %>
+    <%= favicon_link_tag "/favicon-32x32.png", sizes: "32x32", rel: "icon" %>
+    <%= favicon_link_tag "/favicon-16x16.png", sizes:"16x16", rel: "icon" %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
   <body>
-    <%= yield %>
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>
