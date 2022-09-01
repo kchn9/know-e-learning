@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  get 'courses', to: 'courses#index'
+  resources :courses, only: %i[ index new create ]
   root 'courses#index'
 end
