@@ -50,3 +50,8 @@
   width: 200px;
 }
 
+.clickable-card {
+  text-decoration: none;
+  color: inherit;
+}
+

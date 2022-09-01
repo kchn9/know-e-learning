@@ -1,3 +1,13 @@
-<div class="container">
-  <h1>Hello to kNOW!</h1>
+<div class="container pt-4">
+  <h2 class="diplay-6 text-center mb-4">
+    All kNOW courses
+    <small class="text-muted d-block">Find the best one for yourself</small>
+  </h2>
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    <% @courses.each do |c| %>
+      <div class="col">
+        <%= render partial: "courses/card", locals: { course: c } %>
+      </div>
+    <% end %>
+  </div>
 </div>

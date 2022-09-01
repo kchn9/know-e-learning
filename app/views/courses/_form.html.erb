@@ -8,7 +8,7 @@
     <%= form.label :description, class: "form-label" %>
   </div>
   <div class="form-check mb-3">
-    <%= form.check_box :is_free, class: "form-check-input" %>
+    <%= form.check_box :is_free, { class: "form-check-input" }, "true", "false" %>
     <%= form.label "Share for free", class: "form-check-label" %>
   </div>
   <% if defined?(actions) %>
