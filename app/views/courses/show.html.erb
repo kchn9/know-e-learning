@@ -1,0 +1,11 @@
+<div class="container pt-4">
+  <h2 class="display-6 text-center"><%= @course.title %></h2>
+  <figcaption class="blockquote-footer">
+    author placeholder
+  </figcaption>
+  <p><small> <%= @course.is_free ? "for free" : "paid course" %> </small></p>
+  <p class="lead"><%= @course.description %></p>
+  <div class="show-actions">
+    <%= link_to "Back to course list", courses_path, class: "btn btn-secondary" %>
+  </div>
+</div>

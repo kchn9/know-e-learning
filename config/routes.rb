@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  resources :courses, only: %i[ index new create show ]
+  resources :courses, only: %i[ index new create show edit ]
   root 'courses#index'
 end
