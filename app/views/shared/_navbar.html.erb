@@ -1,0 +1,36 @@
+<nav class="navbar bg-light bg-gradient navbar-expand-md">
+  <div class="container">
+    <%= link_to root_path, class: "navbar-brand d-flex" do %>
+      <%= image_tag "logo.png", alt: "kNOW logo", class:"brand-logo-image" %>
+      <div class="brand-logo-spacing"></div>
+      <span class="brand-logo-text">kNOW</span>
+    <% end %>
+    <div class="navbar-spacing"></div>
+    <form class="navbar-search d-flex" role="search">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <%= link_to "Courses", root_path, class: "nav-link" %>
+        </li>
+        <li class="dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Account
+          </a>
+          <ul class="dropdown-menu">
+            <li><h6 class="dropdown-header">kchn9</h6></li>
+            <li><a class="dropdown-item" href="#">Your account</a></li>
+            <li><a class="dropdown-item" href="#">Your courses</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
