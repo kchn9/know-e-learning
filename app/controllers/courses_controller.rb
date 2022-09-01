@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :set_course, only: %i[ show ]
+  before_action :set_course, only: %i[ show edit update ]
 
   def index
     @courses = Course.all()
@@ -19,6 +19,17 @@ class CoursesController < ApplicationController
   end
 
   def show
+  end
+
+  def edit
+  end
+
+  def update
+    if @course.update(course_params)
+      redirect_to(@course)
+    else
+      render :edit
+    end
   end
 
   private
