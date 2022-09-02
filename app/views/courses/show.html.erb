@@ -5,7 +5,9 @@
   </figcaption>
   <p><small> <%= @course.is_free ? "for free" : "paid course" %> </small></p>
   <p class="lead"><%= @course.description %></p>
-  <div class="show-actions">
-    <%= link_to "Back to course list", courses_path, class: "btn btn-secondary" %>
+  <div class="show-actions btn-group">
+      <%= link_to "Back to course list", courses_path, class: "btn btn-primary" %>
+      <%= link_to "Edit", edit_course_path(@course), class: "btn btn-secondary" %>
+      <%= link_to "Delete", @course, class: "btn btn-danger", data: { turbo_method: :delete } %>
   </div>
 </div>

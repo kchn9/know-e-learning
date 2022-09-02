@@ -1,15 +1,14 @@
-<%= link_to course_path(course), class: "card clickable-card" do %>
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="https://picsum.photos/400/300" class="img-fluid rounded-start" alt="...">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title"><%= course.title %></h5>
-        <p class="card-text"><%= course.description %></p>
-        <p class="card-text">
-          <small class="text-muted"><%= course.is_free ? "Free" : "Paid" %></small>
-        </p>
+<%= link_to course, { class: "clickable-card" } do %>
+  <div class="card">
+    <img src="https://picsum.photos/500/500" class="img-fluid rounded-start card-photo" alt="...">
+    <div class="card-body">
+      <h5 class="card-title"><%= course.title %></h5>
+      <p class="card-text"><%= course.description %></p>
+      <p class="card-text"><small class="text-muted"><%= course.is_free ? "Free" : "Paid" %></small></p>
+      <div class="card-actions btn-group">
+        <%= link_to "Show", course, class: "btn btn-primary" %>
+        <%= link_to "Edit", edit_course_path(course), class: "btn btn-secondary" %>
+        <%= link_to "Delete", course_path(course), class: "btn btn-danger", data: { turbo_method: :delete } %>
       </div>
     </div>
   </div>

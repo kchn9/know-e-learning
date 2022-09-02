@@ -13,8 +13,9 @@
   </div>
   <% if defined?(actions) %>
     <div class="form-actions">
-      <%= form.submit "Post a new course", class: "btn btn-primary" %>
+      <%= form.submit @course.new_record? ? "Post a new course" : "Update course", class: "btn btn-primary" %>
       <%= link_to "Back to course list", courses_path, class: "btn btn-secondary" if actions.include?(:back) %>
-    </div>
+      <%= link_to "Delete article", course_path(@course), data: { :method => :delete }, class:"btn btn-danger" if actions.include?(:delete) %>
+      </div>
   <% end %>
 <% end %>
