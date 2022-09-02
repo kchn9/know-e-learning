@@ -14,6 +14,8 @@
  *= require_self
  */
 
+ @import "bootstrap";
+
 .brand-logo-image {
   width: 2rem;
   height: 100%;
@@ -72,5 +74,13 @@
 .card-actions > :nth-child(2) {
   border-top-left-radius: 0.375rem !important;
   border-bottom-left-radius: 0.375rem !important;
+}
+
+.alert-notice {
+  @extend .alert-info;
+}
+
+.alert-alert {
+  @extend .alert-warning;
 }
 
