@@ -15,7 +15,7 @@
     <div class="form-actions">
       <%= form.submit @course.new_record? ? "Post a new course" : "Update course", class: "btn btn-primary" %>
       <%= link_to "Back to course list", courses_path, class: "btn btn-secondary" if actions.include?(:back) %>
-      <%= link_to "Delete article", course_path(@course), data: { :method => :delete }, class:"btn btn-danger" if actions.include?(:delete) %>
+      <%= link_to "Delete article", @course, class: "btn btn-danger", data: { turbo_method: :delete } if actions.include?(:delete) %>
       </div>
   <% end %>
 <% end %>

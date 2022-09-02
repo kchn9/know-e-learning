@@ -8,7 +8,7 @@
       <div class="card-actions btn-group">
         <%= link_to "Show", course, class: "btn btn-primary" %>
         <%= link_to "Edit", edit_course_path(course), class: "btn btn-secondary" %>
-        <%= link_to "Delete", course_path(course), class: "btn btn-danger", data: { turbo_method: :delete } %>
+        <%= link_to "Delete", course, class: "btn btn-danger", data: { turbo_method: :delete } %>
       </div>
     </div>
   </div>
