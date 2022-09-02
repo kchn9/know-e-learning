@@ -21,14 +21,6 @@
   height: 100%;
 }
 
-.navbar-spacing {
-  flex-grow: 1;
-}
-
-.navbar-search {
-  flex: 1 1 200px;
-}
-
 .brand-logo-spacing {
   width: 0.4rem;
 }
@@ -40,16 +32,6 @@
 .brand-logo-text {
   font-size: 1.4rem;
   font-style: oblique;
-}
-
-.collapse.navbar-collapse {
-  margin-left: 1rem;
-  flex-grow: 0;
-}
-
-#navbarSupportedContent > ul > li.dropdown > ul {
-  position: absolute !important;
-  width: 200px;
 }
 
 .card-photo {
@@ -84,3 +66,6 @@
   @extend .alert-warning;
 }
 
+#navbarSupportedContent > ul > li.dropdown.mx-2 > ul {
+  position: absolute;
+}

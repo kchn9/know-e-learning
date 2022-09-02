@@ -1,35 +1,45 @@
 <nav class="navbar bg-light bg-gradient navbar-expand-md">
-  <div class="container">
+  <div class="container d-flex">
     <%= link_to root_path, class: "navbar-brand d-flex" do %>
       <%= image_tag "logo.png", alt: "kNOW logo", class:"brand-logo-image" %>
       <div class="brand-logo-spacing"></div>
       <span class="brand-logo-text">kNOW</span>
     <% end %>
-    <div class="navbar-spacing"></div>
-    <form class="navbar-search d-flex" role="search">
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
+    <li class="nav-item nav-links d-flex flex-grow-1">
+      <%= link_to "Courses", root_path, class: "nav-link" %>
+    </li>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
+      <ul class="navbar-nav mb-2 mb-lg-0 d-flex align-items-center justify-content-end gap-3 my-2">
+        <form class="navbar-search d-flex hstack d-3 mx-2" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
         <li class="nav-item">
-          <%= link_to "Courses", root_path, class: "nav-link" %>
+          <%= link_to "Add a course", new_course_path, class: "btn btn-success" %>
         </li>
-        <li class="dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Account
-          </a>
-          <ul class="dropdown-menu">
-            <li><h6 class="dropdown-header">kchn9</h6></li>
-            <li><a class="dropdown-item" href="#">Your account</a></li>
-            <li><a class="dropdown-item" href="#">Your courses</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Logout</a></li>
-          </ul>
-        </li>
+        <% if user_signed_in? %>
+          <li class="dropdown mx-2">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Your account
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <h6 class="dropdown-header"><%= current_user.email.downcase %></h6>
+              </li>
+              <li><a class="dropdown-item" href="#">Your account</a></li>
+              <li><a class="dropdown-item" href="#">Your courses</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><%= link_to "Logout", destroy_user_session_path, class: "dropdown-item" %></li>
+            </ul>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Sign in", new_user_session_path, class: "btn btn-primary mx-2" %>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>
