@@ -1,0 +1,8 @@
+<% flash.each do |name, msg| %>
+  <div class="<%= "position-fixed m-2 sticky-bottom bottom-0 end-0 alert alert-#{name} alert-dismissible fade show" %>" style="z-index: 1200;" role="alert" >
+    <strong>
+      <%= msg %>
+    </strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% end %>

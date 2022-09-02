@@ -12,8 +12,10 @@ class CoursesController < ApplicationController
   def create
     @course = Course.create(course_params)
     if @course.save
+      flash[:success] = "Course added successfully."
       redirect_to courses_path
     else
+      flash.now[:danger] = "Error. Course not added."
       render :new
     end
   end
@@ -26,14 +28,17 @@ class CoursesController < ApplicationController
 
   def update
     if @course.update(course_params)
+      flash[:success] = "Course updated successfully."
       redirect_to(@course)
     else
+      flash.now[:danger] = "Error. Course not updated."
       render :edit
     end
   end
 
   def destroy
     @course.destroy
+    flash[:success] = "Course deleted successfully."
     redirect_to courses_path, status: :see_other
   end
 
