@@ -1,16 +1,32 @@
-<div class="container pt-2 pb-4">
+<div class="container py-4">
+  <h4 class="subheader text-center"><span class="text-muted">Learning now</span></h4>
   <h2 class="display-6 text-center"><%= @course.title %></h2>
-  <figcaption class="blockquote-footer">
-    <%= @course.user.username %>
-  </figcaption>
-  <p><small> <%= @course.is_free ? "for free" : "paid course" %> </small></p>
-  <div class="ratio ratio-16x9">
-    <%= video_tag url_for(@course.recording), controls: true, autobuffer: true if @course.recording.attached? %>
+  <div class="d-flex justify-content-center my-1">
+    <span class="badge bg-dark">
+      <%= @course.is_free ? "Free" : "Paid" %>
+    </span>
   </div>
-  <p class="lead"><%= @course.description %></p>
-  <div class="show-actions btn-group">
-    <%= link_to "Back to course list", courses_path, class: "btn btn-primary" %>
-    <%= link_to "Edit", edit_course_path(@course), class: "btn btn-secondary" %>
-    <%= link_to "Delete", @course, class: "btn btn-danger", data: { turbo_method: :delete } %>
+  <figcaption class="text-center mb-3">
+    Created any published by <%= @course.user.username %>
+  </figcaption>
+  <% if @course.recording.attached? %>
+    <div class="ratio ratio-16x9">
+      <%= video_tag url_for(@course.recording), controls: true, autobuffer: true %>
+    </div>
+  <% end %>
+  <div class="row my-2">
+    <div class="col-1"></div>
+    <div class="col-10">
+      <p class="lead py-2 my-2">
+        <strong class="">Author description:</strong>
+        <%= @course.description %>
+      </p>
+    </div>
+    <div class="show-actions btn-group d-flex">
+      <%= link_to "Back to course list", courses_path, class: "btn btn-primary" %>
+      <%= link_to "Edit", edit_course_path(@course), class: "btn btn-secondary" %>
+      <%= link_to "Delete", @course, class: "btn btn-danger", data: { turbo_method: :delete } %>
+    </div>
+    <div class="col-1"></div>
   </div>
 </div>
