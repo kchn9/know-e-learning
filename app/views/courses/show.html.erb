@@ -1,13 +1,16 @@
-<div class="container pt-4">
+<div class="container pt-2 pb-4">
   <h2 class="display-6 text-center"><%= @course.title %></h2>
   <figcaption class="blockquote-footer">
     <%= @course.user.username %>
   </figcaption>
   <p><small> <%= @course.is_free ? "for free" : "paid course" %> </small></p>
+  <div class="ratio ratio-16x9">
+    <%= video_tag url_for(@course.recording), controls: true, autobuffer: true if @course.recording.attached? %>
+  </div>
   <p class="lead"><%= @course.description %></p>
   <div class="show-actions btn-group">
-      <%= link_to "Back to course list", courses_path, class: "btn btn-primary" %>
-      <%= link_to "Edit", edit_course_path(@course), class: "btn btn-secondary" %>
-      <%= link_to "Delete", @course, class: "btn btn-danger", data: { turbo_method: :delete } %>
+    <%= link_to "Back to course list", courses_path, class: "btn btn-primary" %>
+    <%= link_to "Edit", edit_course_path(@course), class: "btn btn-secondary" %>
+    <%= link_to "Delete", @course, class: "btn btn-danger", data: { turbo_method: :delete } %>
   </div>
 </div>

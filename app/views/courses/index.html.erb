@@ -7,10 +7,10 @@
     <h5 class="text-center my-5">No courses yet... Feel free to add one!</h5>
   <% end %>
   <div class="row row-cols-1 row-cols-md-2 row-cols-xxl-3 g-4 mb-4">
-    <div class="col">
-      <% @courses.each do |c| %>
+    <% @courses.each do |c| %>
+      <div class="col">
         <%= render partial: "courses/card", locals: { course: c } %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 </div>
