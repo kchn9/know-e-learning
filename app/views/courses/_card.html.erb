@@ -1,6 +1,6 @@
-<%= link_to course, { class: "clickable-card" } do %>
+<%= link_to course, { class: "clickable-card", data: { turbo: false } } do %>
   <div class="card">
-    <img src="<%= "https://picsum.photos/seed/#{course.user.username}/500/500" %>" class="img-fluid rounded-top card-photo" alt="...">
+    <%= image_tag url_for(course.recording.preview(resize_to_limit: [960, 540]).processed), class:"img-fluid rounded-top card-photo", alt:"..." %>
     <div class="card-body">
       <h5 class="card-title"><%= course.title %></h5>
       <p class="card-text mb-1"><%= course.description %></p>
