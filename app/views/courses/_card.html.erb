@@ -1,15 +1,22 @@
 <%= link_to course, { class: "clickable-card" } do %>
   <div class="card">
-    <img src="https://picsum.photos/500/500" class="img-fluid rounded-start card-photo" alt="...">
+    <img src="<%= "https://picsum.photos/seed/#{course.user.username}/500/500" %>" class="img-fluid card-photo" alt="...">
     <div class="card-body">
       <h5 class="card-title"><%= course.title %></h5>
-      <p class="card-text"><%= course.description %></p>
-      <p class="card-text"><small class="text-muted"><%= course.is_free ? "Free" : "Paid" %></small></p>
-      <div class="card-actions btn-group">
+      <p class="card-text mb-1"><%= course.description %></p>
+      <p class="card-text mb-2"><small class="text-muted"><%= course.is_free ? "Free" : "Paid" %></small></p>
+      <div class="card-actions btn-group rounded d-flex justify-content-end">
         <%= link_to "Show", course, class: "btn btn-primary" %>
         <%= link_to "Edit", edit_course_path(course), class: "btn btn-secondary" %>
         <%= link_to "Delete", course, class: "btn btn-danger", data: { turbo_method: :delete } %>
       </div>
+    </div>
+    <div class="card-footer">
+      <p class="card-text">
+        <em>
+          by <%= course.user.username %>
+        </em>
+      </p>
     </div>
   </div>
 <% end %>
