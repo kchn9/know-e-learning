@@ -17,9 +17,11 @@
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
-        <li class="nav-item">
-          <%= link_to "Add a course", new_course_path, class: "btn btn-success" %>
-        </li>
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to "Add a course", new_course_path, class: "btn btn-success" %>
+          </li>
+        <% end %>
         <% if user_signed_in? %>
           <li class="dropdown mx-2">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
