@@ -1,12 +1,12 @@
 <nav class="container-fluid bg-light">
-  <ul class="list-group list-group-horizontal overflow-auto">
-    <li class="list-group-item horizontal-scroll-item">
+  <ul class="list-group list-group-horizontal overflow-auto hide-scrollbar">
+    <li class="list-group-item horizontal-scroll-item flex-shrink-0">
       <%= link_to "All courses", root_path, class: class_names("btn",
         "btn-primary": @category.nil?, "btn-secondary": !@category.nil?) %>
     </li>
       <div class="category-divider"></div>
     <% @categories.each do |category| %>
-      <li class="list-group-item horizontal-scroll-item">
+      <li class="list-group-item horizontal-scroll-item flex-shrink-0">
         <%= link_to category.name, categories_path(category), class: class_names("btn",
             "btn-primary": @category == category, "btn-secondary": @category != category) %>
       </li>

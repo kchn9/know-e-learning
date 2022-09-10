@@ -6,7 +6,7 @@
   </div>
   <div class="mb-3">
     <%= form.label "Pick categories", class: "form-label" %>
-    <%= form.select :categories, @categories.collect{|c| [ c.name, c.id ]} , {}, { class: "form-control js-multiple-select", multiple: true } %>
+    <%= form.select :category_ids, @categories.collect{|c| [ c.name, c.id ]} , {}, { class: "form-control js-multiple-select", multiple: true } %>
   </div>
   <div class="mb-3">
     <%= form.label "Upload course recording", class: "form-label" if !@course.new_record? %>

@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
   before_action :set_category
 
   def show
-    @courses = Course.all
+    @courses = @category.courses
     @categories = Category.all
     @should_render_categories = true
   end
