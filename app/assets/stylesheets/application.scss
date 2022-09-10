@@ -14,7 +14,7 @@
  *= require_self
  */
 
- @import "bootstrap";
+@import "bootstrap";
 
 .brand-logo-image {
   width: 2rem;
@@ -54,11 +54,11 @@
   @extend .alert-warning;
 }
 
-#navbarSupportedContent > ul > li.dropdown.mx-2 > ul {
+#navbarSupportedContent>ul>li.dropdown.mx-2>ul {
   position: absolute;
 }
 
-.btn-group > .btn {
+.btn-group>.btn {
   border-radius: 0;
 }
 
@@ -68,6 +68,20 @@
   border: 0;
 }
 
-.horizontal-scroll-item > a {
+.horizontal-scroll-item>a {
   border-radius: 1rem;
+}
+
+.select2-selection {
+  border: 1px solid #ced4da !important;
+  color: #212529 !important;
+}
+
+.selection > span {
+  padding: 1rem 0.75rem !important;
+}
+
+.select2-search__field {
+  margin-left: 4px !important;
+  line-height: 0.9;
 }
