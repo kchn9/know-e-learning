@@ -13,6 +13,7 @@
   </head>
   <body>
     <%= render partial: "shared/navbar" %>
+    <%= render partial: "categories/bar" if @should_render_categories %>
     <main>
       <%= yield %>
     </main>

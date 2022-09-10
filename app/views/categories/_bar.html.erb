@@ -1,0 +1,9 @@
+<nav class="container-fluid bg-light">
+  <ul class="list-group list-group-horizontal overflow-auto">
+    <% @categories.each do |category| %>
+      <li class="list-group-item horizontal-scroll-item">
+        <%= link_to category.name, categories_path(category), class: "btn btn-secondary" %>
+      </li>
+    <% end %>
+  </ul>
+</nav>

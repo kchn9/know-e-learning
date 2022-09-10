@@ -4,6 +4,8 @@ class CoursesController < ApplicationController
 
   def index
     @courses = Course.all()
+    @categories = Category.all()
+    @should_render_categories = true
   end
 
   def new
