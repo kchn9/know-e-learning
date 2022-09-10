@@ -10,6 +10,7 @@ class CoursesController < ApplicationController
 
   def new
     @course = Course.new()
+    @categories = Category.all()
   end
 
   def create
@@ -27,6 +28,7 @@ class CoursesController < ApplicationController
   end
 
   def edit
+    @categories = Category.all()
   end
 
   def update
