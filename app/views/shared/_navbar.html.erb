@@ -1,44 +1,71 @@
-<nav class="navbar bg-light bg-gradient navbar-expand-sm">
+<nav class="navbar navbar-expand-md">
   <div class="container-fluid">
+    <% if user_signed_in? %>
+      <div class="navbar-nav">
+        <li class="d-md-none dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+              <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+            </svg>
+            Your account
+          </a>
+          <ul class="dropdown-menu">
+            <h6 class="dropdown-header">Signed as <%= current_user.username %></h6>
+            <li><a class="dropdown-item" href="#">Edit account</a></li>
+            <%= link_to "Sign out", destroy_user_session_path, class: "dropdown-item" %>
+          </ul>
+        </li>
+      </div>
+    <% else %>
+      <%= link_to "Sign in", new_user_session_path, class: "d-md-none ms-2 btn btn-primary" %>
+    <% end %>
     <%= link_to root_path, class: "navbar-brand d-flex" do %>
       <%= image_tag "logo.png", alt: "kNOW logo", class:"brand-logo-image" %>
       <div class="brand-logo-spacing"></div>
-      <span class="brand-logo-text">kNOW</span>
+      kNOW
     <% end %>
-    <li class="nav-item nav-links d-flex flex-grow-1">
-      <%= link_to "Courses", root_path, class: "nav-link" %>
-    </li>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    <button class="btn border border-0 navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000" class="bi bi-list" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+      </svg>
     </button>
-    <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
-      <ul class="navbar-nav mb-2 mb-lg-0 d-flex align-items-center justify-content-end gap-3 my-2">
+    <div class="collapse navbar-collapse" id="navbarContent">
+      <ul class="navbar-nav me-auto my-1">
+        <%= link_to "Create course", new_course_path, class: "nav-link active mx-1" %>
         <% if user_signed_in? %>
-          <li class="nav-item">
-            <%= link_to "Add a course", new_course_path, class: "btn btn-success" %>
-          </li>
-        <% end %>
-        <% if user_signed_in? %>
-          <li class="dropdown mx-2">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Your account
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <h6 class="dropdown-header"><%= current_user.username %></h6>
-              </li>
-              <li><a class="dropdown-item" href="#">Your account</a></li>
-              <li><a class="dropdown-item" href="#">Your courses</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><%= link_to "Logout", destroy_user_session_path, class: "dropdown-item" %></li>
-            </ul>
-          </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to "Sign in", new_user_session_path, class: "btn btn-primary mx-2" %>
-          </li>
+          <div class="navbar-divider collapse navbar-collapse me-2"></div>
+          <div class="collapse navbar-collapse">
+            <li class="dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                </svg>
+                Your account
+              </a>
+              <ul class="dropdown-menu">
+                <h6 class="dropdown-header">Signed as <%= current_user.username %></h6>
+                <a class="dropdown-item" href="#">Edit account</a>
+                <%= link_to "Sign out", destroy_user_session_path, class: "dropdown-item" %>
+              </ul>
+            </li>
+          </div>
         <% end %>
       </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-1" type="search" placeholder="Start typing to search..." aria-label="Search">
+        <button class="btn btn-primary d-flex justify-content-center align-items-center" type="submit">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search mx-1" viewBox="0 0 16 16">
+            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+          </svg>
+        </button>
+      </form>
+      <% if !user_signed_in? %>
+        <div class="collapse navbar-collapse flex-grow-0">
+          <%= link_to "Sign in", new_user_session_path, class: "btn btn-primary ms-2" %>
+        </div>
+      <% end %>
     </div>
   </div>
 </nav>

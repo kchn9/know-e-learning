@@ -29,11 +29,6 @@
   margin-left: 1rem;
 }
 
-.brand-logo-text {
-  font-size: 1.4rem;
-  font-style: oblique;
-}
-
 .card-photo {
   object-fit: cover;
   aspect-ratio: 16/9;
@@ -54,8 +49,8 @@
   @extend .alert-warning;
 }
 
-#navbarSupportedContent>ul>li.dropdown.mx-2>ul {
-  position: absolute;
+.dropdown-menu {
+  position: absolute !important;
 }
 
 .btn-group>.btn {
@@ -90,6 +85,13 @@
   border-right: 1px solid #212529;
   opacity: .2;
   height: 40px;
+  margin: auto 0;
+}
+
+.navbar-divider {
+  border-right: 1px solid #212529;
+  opacity: .2;
+  height: 25px;
   margin: auto 0;
 }
 
