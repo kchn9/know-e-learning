@@ -7,7 +7,7 @@
     </span>
   </div>
   <figcaption class="text-center mb-3">
-    Created any published by <%= @course.user.username %>
+    Created any published by <%= @course.author.username %>
   </figcaption>
   <% if @course.recording.attached? %>
     <div class="ratio ratio-16x9">

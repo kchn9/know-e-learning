@@ -1,0 +1,15 @@
+<div class="container pt-4">
+  <h2 class="diplay-6 text-center mb-4">
+    Your learning list
+  </h2>
+  <% if @courses.empty? %>
+    <h5 class="text-center my-5">No courses yet... Feel free to add one!</h5>
+  <% end %>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-xxl-3 g-4 mb-4">
+    <% @courses.each do |c| %>
+      <div class="col">
+        <%= render partial: "courses/card", locals: { course: c } %>
+      </div>
+    <% end %>
+  </div>
+</div>

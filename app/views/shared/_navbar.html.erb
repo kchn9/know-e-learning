@@ -35,8 +35,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarContent">
       <ul class="navbar-nav me-auto my-1">
-        <%= link_to "Create course", new_course_path, class: "nav-link active mx-1", data: {turbo: false} %>
         <% if user_signed_in? %>
+          <%= link_to "Create course", new_course_path, class: "nav-link active mx-1", data: {turbo: false} %>
+          <%= link_to "Learn", learning_path, class: "nav-link active mx-1" %>
           <div class="navbar-divider collapse navbar-collapse me-2"></div>
           <div class="collapse navbar-collapse">
             <li class="dropdown">
