@@ -3,7 +3,7 @@
     <%= image_tag url_for(course.recording.preview(resize_to_limit: [960, 540]).processed), class:"img-fluid rounded-top card-photo", alt:"Course thumbnail" %>
     <div class="card-body">
       <h5 class="card-title"><%= course.title %></h5>
-      <p class="card-text mb-1"><%= course.description %></p>
+      <p class="card-text mb-1"><%= truncate(course.description, length: 50) %></p>
       <p class="card-text mb-2"><small class="text-muted"><%= course.is_free ? "Free" : "Paid" %></small></p>
       <div class="card-actions btn-group rounded d-flex justify-content-end">
         <%= link_to "Enroll", enroll_path(course), class: "btn btn-primary" %>
