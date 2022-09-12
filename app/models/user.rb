@@ -1,6 +1,11 @@
 class User < ApplicationRecord
-  has_many :courses, dependent: :destroy
+  # one to many - user (author) <=> courses
+  has_many :created_courses, class_name: "Course", foreign_key: :author_id, dependent: :destroy
+  # many to many - users (learners) <=> courses
+  has_many :enrolled_courses
+  has_many :courses, through: :enrolled_courses
 
+  # devise configuration
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 

@@ -14,7 +14,8 @@ class CoursesController < ApplicationController
   end
 
   def create
-    @course = current_user.courses.create(course_params)
+    @categories = Category.all()
+    @course = current_user.created_courses.create(course_params)
     if @course.save
       flash[:success] = "Course added successfully."
       redirect_to courses_path
