@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
-  before_action :authenticate_user!, only: %i[ new create edit update destroy enroll ]
-  before_action :set_course, only: %i[ show edit update destroy enroll ]
+  before_action :authenticate_user!, only: %i[ show new create edit update destroy enroll ]
+  before_action :set_course, only: %i[ show preview edit update destroy enroll ]
+  before_action :only_enrolled_users, only: %i[ show ]
 
   def index
     @courses = Course.all()
@@ -23,6 +24,9 @@ class CoursesController < ApplicationController
       flash.now[:danger] = "Error. Course not added."
       render :new
     end
+  end
+
+  def preview
   end
 
   def show
@@ -54,12 +58,19 @@ class CoursesController < ApplicationController
       flash[:success] = "Enrolled successfully."
       redirect_to(@course)
     else
-      flash[:danger] = "Enroll error. Try again later."
+      flash[:danger] = "You can not enroll your own course. You can enroll course only once."
       redirect_to courses_path
     end
   end
 
   private
+  def only_enrolled_users
+    if current_user.courses.exclude? @course
+      flash[:warning] = "You are not allowed to learn from this course."
+      redirect_to courses_path
+    end
+  end
+
   def course_params
     params.require(:course).permit(:title, :recording, :description, :is_free, category_ids: [])
   end

@@ -1,5 +1,5 @@
 <div class="container py-4">
-  <h4 class="subheader text-center"><span class="text-muted">Learning now</span></h4>
+  <h4 class="subheader text-center"><span class="text-muted">Preview of</span></h4>
   <h2 class="display-6 text-center"><%= @course.title %></h2>
   <div class="d-flex justify-content-center my-1">
     <span class="badge bg-dark">
@@ -11,7 +11,7 @@
   </figcaption>
   <% if @course.recording.attached? %>
     <div class="ratio ratio-16x9">
-      <%= video_tag url_for(@course.recording), controls: true, autobuffer: true %>
+      <%= image_tag url_for(@course.recording.preview(resize_to_limit: [1920, 1080]).processed), alt:"Course thumbnail" %>
     </div>
   <% end %>
   <div class="row my-2">
@@ -24,8 +24,6 @@
     </div>
     <div class="show-actions btn-group d-flex">
       <%= link_to "Back to course list", courses_path, class: "btn btn-primary" %>
-      <%= link_to "Edit", edit_course_path(@course), class: "btn btn-secondary" %>
-      <%= link_to "Delete", @course, class: "btn btn-danger", data: { turbo_method: :delete } %>
     </div>
     <div class="col-1"></div>
   </div>
