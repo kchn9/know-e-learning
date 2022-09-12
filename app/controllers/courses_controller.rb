@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
-  before_action :authenticate_user!, only: %i[ new create edit update destroy ]
-  before_action :set_course, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, only: %i[ new create edit update destroy enroll ]
+  before_action :set_course, only: %i[ show edit update destroy enroll ]
 
   def index
     @courses = Course.all()
@@ -46,6 +46,17 @@ class CoursesController < ApplicationController
     @course.destroy
     flash[:success] = "Course deleted successfully."
     redirect_to courses_path, status: :see_other
+  end
+
+  def enroll
+    enrolledCourse = current_user.enrolled_courses.build(course_id: @course.id)
+    if enrolledCourse.valid? && enrolledCourse.save
+      flash[:success] = "Enrolled successfully."
+      redirect_to(@course)
+    else
+      flash[:danger] = "Enroll error. Try again later."
+      redirect_to courses_path
+    end
   end
 
   private

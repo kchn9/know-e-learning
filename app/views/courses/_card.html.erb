@@ -1,14 +1,15 @@
 <%= link_to course, { class: "clickable-card", data: { turbo: false } } do %>
   <div class="card">
-    <%= image_tag url_for(course.recording.preview(resize_to_limit: [960, 540]).processed), class:"img-fluid rounded-top card-photo", alt:"..." %>
+    <%= image_tag url_for(course.recording.preview(resize_to_limit: [960, 540]).processed), class:"img-fluid rounded-top card-photo", alt:"Course thumbnail" %>
     <div class="card-body">
       <h5 class="card-title"><%= course.title %></h5>
       <p class="card-text mb-1"><%= course.description %></p>
       <p class="card-text mb-2"><small class="text-muted"><%= course.is_free ? "Free" : "Paid" %></small></p>
       <div class="card-actions btn-group rounded d-flex justify-content-end">
-        <%= link_to "Show", course, class: "btn btn-primary", data: { turbo: false } %>
-        <%= link_to "Edit", edit_course_path(course), class: "btn btn-secondary" %>
-        <%= link_to "Delete", course, class: "btn btn-danger", data: { turbo_method: :delete } %>
+        <%= link_to "Enroll", enroll_path(course), class: "btn btn-primary" %>
+        <%= link_to "Show", course, class: "btn btn-secondary", data: { turbo: false } %>
+        <!--<%= link_to "Edit", edit_course_path(course), class: "btn btn-secondary" %>-->
+        <!--<%= link_to "Delete", course, class: "btn btn-danger", data: { turbo_method: :delete } %>-->
       </div>
     </div>
     <div class="card-footer">
