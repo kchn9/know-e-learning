@@ -1,31 +1,30 @@
-<div class="container py-4">
-  <h4 class="subheader text-center"><span class="text-muted">Preview of</span></h4>
-  <h2 class="display-6 text-center"><%= @course.title %></h2>
-  <div class="d-flex justify-content-center my-1">
-    <span class="badge bg-dark">
-      <%= @course.is_free ? "Free" : "Paid" %>
-    </span>
+<div class="container py-5">
+  <div class="d-flex justify-content-center align-items-baseline mb-3">
+    <h4 class="d-inline-block lead me-1">Preview of: </h4>
+    <h3 class="d-inline-block ms-1"><%= @course.title %></h3>
   </div>
-  <figcaption class="text-center mb-3">
-    Created and published by <%= @course.author.username %>
-  </figcaption>
   <% if @course.recording.attached? %>
     <div class="ratio ratio-16x9 preview-photo">
       <h5 class="preview-info">That's video thumbnail - to watch course enroll it <%= link_to "here", enroll_path(@course) %></h5>
       <%= image_tag url_for(@course.recording.preview(resize_to_limit: [854, 480]).processed), alt:"Course thumbnail" %>
     </div>
   <% end %>
-  <div class="row my-2">
-    <div class="col-1"></div>
-    <div class="col-10">
-      <p class="lead py-2 my-2">
-        <strong class="">Author description:</strong>
+  <div class="row my-4 pt-2 bg-light">
+    <div class="col-10 mx-auto">
+      <h5 class="text-center">
+        Author notes:
+      </h5>
+    </div>
+    <div class="col-8 mx-auto">
+      <p class="m-0 text-center">
         <%= @course.description %>
       </p>
     </div>
-    <div class="show-actions btn-group d-flex">
-      <%= link_to "Back to course list", courses_path, class: "btn btn-primary" %>
-    </div>
-    <div class="col-1"></div>
   </div>
+  <div class="d-grid gap-2 col-10 col-md-6 col-lg-4 mx-auto pt-4">
+    <%= link_to "Back to course list", courses_path, class: "btn btn-primary" %>
+  </div>
+  <figcaption class="text-center text-muted my-4 pt-2">
+    Created and published by <%= @course.author.username %>
+  </figcaption>
 </div>
