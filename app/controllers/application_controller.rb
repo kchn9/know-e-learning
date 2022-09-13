@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_query
 
   protected
 
@@ -12,4 +13,11 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(user)
     courses_path
   end
+
+  private
+
+  def set_query
+    @q = Course.ransack(params[:q])
+  end
+
 end
