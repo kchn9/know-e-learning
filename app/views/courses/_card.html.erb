@@ -1,6 +1,6 @@
 <%= link_to course, { class: "clickable-card", data: { turbo: false } } do %>
   <div class="card">
-    <%= image_tag url_for(course.recording.preview(resize_to_limit: [1920, 1080]).processed), class:"img-fluid rounded-top card-photo", alt:"Course thumbnail" %>
+    <%= image_tag url_for(course.recording.preview(resize_to_limit:  [854, 480]).processed), class:"img-fluid rounded-top card-photo", alt:"Course thumbnail" %>
     <div class="card-body d-flex flex-column h-100">
       <h5 class="card-title"><%= course.title %></h5>
       <p class="card-text mb-1"><%= truncate(course.description, length: 30) %></p>

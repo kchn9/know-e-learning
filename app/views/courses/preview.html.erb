@@ -10,8 +10,9 @@
     Created and published by <%= @course.author.username %>
   </figcaption>
   <% if @course.recording.attached? %>
-    <div class="ratio ratio-16x9">
-      <%= image_tag url_for(@course.recording.preview(resize_to_limit: [1920, 1080]).processed), alt:"Course thumbnail" %>
+    <div class="ratio ratio-16x9 preview-photo">
+      <h5 class="preview-info">That's video thumbnail - to watch course enroll it <%= link_to "here", enroll_path(@course) %></h5>
+      <%= image_tag url_for(@course.recording.preview(resize_to_limit: [854, 480]).processed), alt:"Course thumbnail" %>
     </div>
   <% end %>
   <div class="row my-2">
