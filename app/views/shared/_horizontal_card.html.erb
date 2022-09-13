@@ -6,7 +6,7 @@
     <div class="col-lg-6 col-xl-8">
       <div class="card-body d-flex flex-column h-100">
         <h5 class="card-title"><%= course.title %></h5>
-        <p class="card-text"><%= truncate(course.description, length: 50) %></p>
+        <p class="card-text"><%= truncate(course.description, length: 256) %></p>
         <p class="card-text"><small class="text-muted">Shared by <%= course.author.username %></small></p>
         <div class="card-actions d-grid gap-2 d-md-block mt-auto">
           <%= link_to "Continue learning", course, class: "btn btn-primary active flex-grow-1", data: { turbo: false } if actions.include?(:learn) %>

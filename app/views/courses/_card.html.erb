@@ -10,7 +10,7 @@
           <span class="badge text-bg-dark">Paid</span>
         <% end %>
       </p>
-      <p class="card-text mb-1"><%= truncate(course.description, length: 30) %></p>
+      <p class="card-text mb-1"><%= truncate(course.description, length: 256) %></p>
       <div class="card-actions d-flex gap-1 justify-content-end ms-auto w-50">
         <% if user_signed_in? && current_user.courses.include?(course) %>
           <%= link_to "Continue learning", course, class: "btn btn-sm btn-primary flex-grow-1" %>
