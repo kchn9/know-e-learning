@@ -18,7 +18,7 @@
           <%= link_to "Edit", edit_course_path(course), class: "btn btn-sm btn-outline-secondary flex-grow-1", data: { turbo: false } %>
           <%= link_to "Delete", course, class: "btn btn-sm btn-outline-danger flex-grow-1", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
         <% else %>
-          <%= link_to "Enroll", enroll_path(course), class: "btn btn-sm btn-primary flex-grow-1" %>
+          <%= link_to "Enroll", course_enroll_path(course), class: "btn btn-sm btn-primary flex-grow-1" %>
           <%= link_to "Preview", course, class: "btn btn-sm btn-secondary flex-grow-1", data: { turbo: false } %>
         <% end %>
       </div>

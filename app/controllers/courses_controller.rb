@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   before_action :authenticate_user!, only: %i[ show new create edit update destroy enroll ]
-  before_action :set_course, only: %i[ show preview edit update destroy enroll ]
+  before_action :set_course, only: %i[ show preview edit update destroy ]
   before_action :only_course_author, only: %i[ edit destroy ]
 
   def index
@@ -56,10 +56,11 @@ class CoursesController < ApplicationController
   end
 
   def enroll
-    enrolledCourse = current_user.enrolled_courses.build(course_id: @course.id)
+    course = Course.find_by(id: params[:course_id])
+    enrolledCourse = current_user.enrolled_courses.build(course_id: course.id)
     if enrolledCourse.valid? && enrolledCourse.save
       flash[:success] = "Enrolled successfully."
-      redirect_to(@course)
+      redirect_to course
     else
       flash[:danger] = "You can not enroll your own course. You can enroll course only once."
       redirect_to courses_path
@@ -68,7 +69,7 @@ class CoursesController < ApplicationController
 
   private
   def only_course_author
-    if current_user.created_courses.exclude? @course
+    if current_user.created_courses.exclude?(@course)
       flash[:warning] = "You are not allowed to edit/delete this course."
       redirect_to courses_path
     end
