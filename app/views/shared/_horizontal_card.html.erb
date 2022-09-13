@@ -9,7 +9,9 @@
         <p class="card-text"><%= truncate(course.description, length: 50) %></p>
         <p class="card-text"><small class="text-muted">Shared by <%= course.author.username %></small></p>
         <div class="card-actions d-grid gap-2 d-md-block mt-auto">
-          <%= link_to "Continue learning", course, class: "btn btn-primary active flex-grow-1", data: { turbo: false } %>
+          <%= link_to "Continue learning", course, class: "btn btn-primary active flex-grow-1", data: { turbo: false } if actions.include?(:learn) %>
+          <%= link_to "Edit", edit_course_path(course), class: "btn btn-secondary active flex-grow-1", data: { turbo: false } if actions.include?(:edit) %>
+          <%= link_to "Delete", course, class: "btn btn-danger active flex-grow-1", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } if actions.include?(:delete) %>
         </div>
       </div>
     </div>

@@ -7,7 +7,7 @@
   <% end %>
   <div class="container-fluid">
     <% @courses.each do |c| %>
-      <%= render partial: "learning/horizontal_card", locals: { course: c } %>
+      <%= render partial: "shared/horizontal_card", locals: { course: c, actions: %i[ learn ] } %>
     <% end %>
   </div>
 </div>

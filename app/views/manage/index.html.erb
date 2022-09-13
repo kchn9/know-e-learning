@@ -1,0 +1,13 @@
+<div class="container pt-4">
+  <h2 class="diplay-6 text-center mb-4">
+    Manage your courses
+  </h2>
+  <% if @courses.empty? %>
+    <h5 class="text-center my-5">You have not created any course yet, create one <%= link_to "here", new_course_path %></h5>
+  <% end %>
+  <div class="container-fluid">
+    <% @courses.each do |c| %>
+      <%= render partial: "shared/horizontal_card", locals: { course: c, actions: %i[ edit delete ] } %>
+    <% end %>
+  </div>
+</div>
