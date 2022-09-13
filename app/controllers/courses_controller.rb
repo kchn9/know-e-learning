@@ -1,8 +1,7 @@
 class CoursesController < ApplicationController
   before_action :authenticate_user!, only: %i[ show new create edit update destroy enroll ]
   before_action :set_course, only: %i[ show preview edit update destroy enroll ]
-  before_action :only_course_owner, only: %i[ edit destroy ]
-  before_action :only_enrolled_users, only: %i[ show ]
+  before_action :only_course_author, only: %i[ edit destroy ]
 
   def index
     @courses = Course.all()
@@ -27,10 +26,13 @@ class CoursesController < ApplicationController
     end
   end
 
-  def preview
+  def show
+    if current_user.created_courses.exclude?(@course) && current_user.courses.exclude?(@course)
+      render :preview
+    end
   end
 
-  def show
+  def preview
   end
 
   def edit
@@ -65,17 +67,7 @@ class CoursesController < ApplicationController
   end
 
   private
-  def only_enrolled_users
-    if current_user.created_courses.include? @course
-      return
-    end
-    if current_user.courses.exclude? @course
-      flash[:warning] = "You are not allowed to learn from this course."
-      redirect_to courses_path
-    end
-  end
-
-  def only_course_owner
+  def only_course_author
     if current_user.created_courses.exclude? @course
       flash[:warning] = "You are not allowed to edit/delete this course."
       redirect_to courses_path
