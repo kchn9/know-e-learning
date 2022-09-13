@@ -3,13 +3,15 @@
     All kNOW courses
     <small class="text-muted d-block">Find the best one for yourself</small>
   </h2>
-  <% if @courses.empty? %>
+  <% if @q.result(distinct: true).empty? %>
+    <h5 class="text-center text-muted my-5">Apologizes, I did not find any course you are looking for</h5>
+  <% elsif @courses.empty? %>
     <h5 class="text-center my-5">No courses yet... Feel free to add one!</h5>
   <% end %>
   <div class="row row-cols-1 row-cols-md-2 row-cols-xxl-3 g-4 mb-4">
     <% @courses.each do |c| %>
       <div class="col">
-        <%= render partial: "courses/card", locals: { course: c } %>
+        <%= render partial: "shared/card", locals: { course: c } %>
       </div>
     <% end %>
   </div>

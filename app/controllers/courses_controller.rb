@@ -4,7 +4,7 @@ class CoursesController < ApplicationController
   before_action :only_course_author, only: %i[ edit destroy ]
 
   def index
-    @courses = Course.all()
+    @courses = @q.result(distinct: true) || Course.all()
     @categories = Category.all()
     @should_render_categories = true
   end
