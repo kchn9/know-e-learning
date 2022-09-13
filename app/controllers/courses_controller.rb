@@ -66,6 +66,9 @@ class CoursesController < ApplicationController
 
   private
   def only_enrolled_users
+    if current_user.created_courses.include? @course
+      return
+    end
     if current_user.courses.exclude? @course
       flash[:warning] = "You are not allowed to learn from this course."
       redirect_to courses_path

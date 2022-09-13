@@ -1,4 +1,10 @@
-<%= link_to course, { class: "clickable-card", data: { turbo: false } } do %>
+<%= link_to user_signed_in? ?
+  (current_user.courses.include?(course) || current_user.created_courses.include?(course) ?
+    course
+    : preview_path(course))
+  : preview_path(course
+  ),
+{ class: "clickable-card", data: { turbo: false } } do %>
   <div class="card">
     <%= image_tag url_for(course.recording.preview(resize_to_limit:  [854, 480]).processed), class:"img-fluid rounded-top card-photo", alt:"Course thumbnail" %>
     <div class="card-body d-flex flex-column h-100">
@@ -13,7 +19,7 @@
       <p class="card-text mb-1"><%= truncate(course.description, length: 30) %></p>
       <div class="card-actions d-flex gap-1 justify-content-end ms-auto w-50">
         <% if user_signed_in? && current_user.courses.include?(course) %>
-          <%= link_to "Learn", course, class: "btn btn-sm btn-primary flex-grow-1" %>
+          <%= link_to "Continue learning", course, class: "btn btn-sm btn-primary flex-grow-1" %>
         <% elsif user_signed_in? && current_user.created_courses.include?(course) %>
           <%= link_to "Edit", edit_course_path(course), class: "btn btn-sm btn-outline-secondary flex-grow-1", data: { turbo: false } %>
           <%= link_to "Delete", course, class: "btn btn-sm btn-outline-danger flex-grow-1", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
