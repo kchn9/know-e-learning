@@ -10,7 +10,7 @@
   </div>
   <div class="mb-3">
     <%= form.label "Upload course recording", class: "form-label" if !@course.new_record? %>
-    <%= form.file_field :recording, class: "form-control", required: true, disabled: !@course.new_record? %>
+    <%= form.file_field :recording, accept: "video/mp4,video/x-m4v,video/*", class: "form-control", required: true, disabled: !@course.new_record? %>
   </div>
   <div class="form-floating mb-3">
     <%= form.text_area :description, class: "form-control", placeholder: "Enter the course description", required: true %>

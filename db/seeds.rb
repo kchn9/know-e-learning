@@ -17,5 +17,5 @@ Category.create(name: "React")
 Category.create(name: "Vue")
 Category.create(name: "State management")
 Category.create(name: "Javascript")
-Category.create(name: "HTML"
+Category.create(name: "HTML")
 Category.create(name: "CSS")
