@@ -2,7 +2,7 @@
   <div class="container-lg">
     <% if user_signed_in? %>
       <div class="navbar-nav">
-        <li class="d-md-none dropdown">
+        <li class="d-lg-none dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
               <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
@@ -21,7 +21,7 @@
         </li>
       </div>
     <% else %>
-      <%= link_to "Sign in", new_user_session_path, class: "d-md-none ms-2 btn btn-primary" %>
+      <%= link_to "Sign in", new_user_session_path, class: "d-lg-none ms-2 btn btn-primary" %>
     <% end %>
     <%= link_to root_path, class: "navbar-brand d-flex" do %>
       <%= image_tag "logo.png", alt: "kNOW logo", class:"brand-logo-image" %>
