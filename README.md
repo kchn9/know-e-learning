@@ -5,11 +5,6 @@ Implementation of webapp connecting learners and mentors which want
 to share their valuable knowledge by creating course and uploading it to server.
 
 
-### Check it live
-
-https://learning-webiste.herokuapp.com
-
-
 ## Run Locally
 
 Clone  from github and run it locally
